@@ -1,74 +1,51 @@
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Runner extends JPanel{
+	Random rnd = new Random(1234);	
 	
-	// Practice using Loops, random #s and 
-	// methods
 	public void paint(Graphics g) {
-		
-		Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(5));
-        
-		 
-		//1) draw a concentric rectangle that's 10pixels from all sides of the "gray"
-		//portion of the GUI
-		g2.drawRect(10, 10, 765, 540);
-		
-		
-		//2) Draw a horizontal line to bisect the Rectangle
-		g2.drawLine(10, 270, 770, 270);
-		
-		
-		//3) Draw a vertical line to bisect the shape again
-		g2.drawLine(765/2, 10, 765/2,550 );
-		
-		
-		//4) small rectangles on top-left
-		g2.drawLine(765/4, 10, 765/4, 550/2-10);
-		
-		
-		/* 
-		 * int var = 0; 						<---- control variable
-		 * while(var < 10){ 					<---- condition to run the loop
-		 *   
-		 *   //any repeating code
-		 *   
-		 *   var++;								<---- update control variable
-		 *   
-		 * }
-		 */
-		
-		 
-
-	
-	
+		// Draw Grid
+		for(int i=0; i<=1000; i+=10) {
+			g.drawLine(0+i, 0, 0, 700-i);
+		}
+			for(int i=0; i<=1000; i+=10) {
+				g.drawLine(0, 0+i, 0+i, 663);
+			}
+			int o = 0;
+			int u = 0;
+			while(o<=1000) {
+				g.drawLine(1000-o, 0, 990, 700-o);
+				o+=10;
+			}
+			while(u<=1000) {
+				g.drawLine(1000-u, 663, 990, 0+u);
+				u+=10;
+			}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	public static void main(String[] arg) {
+		
 		Runner m = new Runner();
+
 	}
+	
 	
 	public Runner() {
-		JFrame f = new JFrame("Method Use");
+		JFrame f = new JFrame("Loops and Random Numbers");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(800,600);
+		f.setSize(1000,700);
 		f.add(this);
 		f.setVisible(true);
 		
 	}
+	
+
 }
+
